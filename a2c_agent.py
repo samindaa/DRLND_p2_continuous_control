@@ -51,6 +51,7 @@ class Config:
         self.save_interval = 10
         self.train_episodes = 150
         self.train_mode = True
+        self.train_agent = True
 
     def add_argument(self, *args, **kwargs):
         self.parser.add_argument(*args, **kwargs)
@@ -127,7 +128,7 @@ class GaussianActorCriticNet(nn.Module):
 
 
 class FCBody(nn.Module):
-    def __init__(self, state_dim, hidden_units=(200, 200), gate=F.relu):
+    def __init__(self, state_dim, hidden_units=(256, 256), gate=F.relu):
         super(FCBody, self).__init__()
         dims = (state_dim,) + hidden_units
         self.layers = nn.ModuleList(
@@ -153,10 +154,11 @@ class DummyBody(nn.Module):
 class UnityEnvironmentTask:
 
     def __init__(self, file_name, train_mode=True):
+        self.train_mode = train_mode
         self.env = UnityEnvironment(file_name=file_name)
         self.brain_name = self.env.brain_names[0]
         self.brain = self.env.brains[self.brain_name]
-        self.env_info = self.env.reset(train_mode=train_mode)[self.brain_name]
+        self.env_info = self.env.reset(train_mode=self.train_mode)[self.brain_name]
         self.num_agents = len(self.env_info.agents)
         self.action_dim = self.brain.vector_action_space_size
         print('Brain name:', self.brain_name)
@@ -164,7 +166,7 @@ class UnityEnvironmentTask:
         print('Size of each action:', self.action_dim)
 
     def reset(self):
-        env_info = self.env.reset(train_mode=True)[self.brain_name]
+        env_info = self.env.reset(train_mode=self.train_mode)[self.brain_name]
         return env_info.vector_observations
 
     def step(self, actions):
@@ -282,8 +284,8 @@ class A2CAgent:
         rewards = []
         for ep in range(self.config.eval_episodes):
             rewards.append(self.eval_episode())
-        self.config.logger.info('evaluation episode return: %f(%f)' % (
-            np.mean(rewards), np.std(rewards) / np.sqrt(len(rewards))))
+        self.config.logger.info('evaluation episodes(%d) return: %f(%f)' % (
+            config.eval_episodes, np.mean(rewards), np.std(rewards) / np.sqrt(len(rewards))))
 
     def close(self):
         self.task.close()
@@ -324,11 +326,16 @@ def eval_agent(agent):
     agent_name = agent.__class__.__name__
     agent.load('model-{}.bin'.format(agent_name))
     agent.eval_episodes()
-
+    agent.close()
 
 
 config = Config()
-config.file_name = "/Users/saminda/Udacity/DRLND/Sim/Reacher20/Reacher.app"
-config.train_mode = False
-#train_agent(A2CAgent(config))
-eval_agent(A2CAgent(config))
+config.add_argument('--file_name', default='/Users/saminda/Udacity/DRLND/Sim/Reacher20/Reacher.app',
+                    help='Unity environment')
+config.add_argument('--train_agent', type=int, default=0, metavar='N', help='train agent')
+config.merge()
+if config.train_agent:
+    train_agent(A2CAgent(config))
+else:
+    # config.train_mode = False
+    eval_agent(A2CAgent(config))
