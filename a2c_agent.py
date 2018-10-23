@@ -333,9 +333,9 @@ config = Config()
 config.add_argument('--file_name', default='/Users/saminda/Udacity/DRLND/Sim/Reacher20/Reacher.app',
                     help='Unity environment')
 config.add_argument('--train_agent', type=int, default=0, metavar='N', help='train agent')
+config.add_argument('--train_mode', type=int, default=0, metavar='N', help='train mode')
 config.merge()
 if config.train_agent:
     train_agent(A2CAgent(config))
 else:
-    # config.train_mode = False
     eval_agent(A2CAgent(config))
