@@ -33,4 +33,4 @@ The agent was trained on a Mac.
 
 	python3 ac2_agent.py --file_name=path/to/Reacher.app --train_mode=0
 	
-Please provide the path of the 20 agent simulator binary or app in the __file\_name__	argument. __train\_mode__=0 runs the simulator in real_time, while, 1, switch to training mode, which runs above real-time. 
+Please provide the path of the 20 agent simulator binary or app in the __file\_name__	argument. __train\_mode__=0 runs the simulator in real-time, while, 1, switch to training mode, which runs above real-time. 
