@@ -233,7 +233,7 @@ The video available at the top of the discussion shows the agent's behavior.
 
 ### Ideas for Future Work
 
-In this project, we have committed to implement the agent using A2C algorithm. There are other distributed algorithms we could have used to solve the environment and compare the performance, such as A3C, [PPO](https://arxiv.org/pdf/1707.06347.pdf), [D4PG](https://openreview.net/pdf?id=SyZipzbCb), [DDPG](https://arxiv.org/pdf/1509.02971.pdf), so on. It is also interesting to see whether we can learn the same agent behavior from the raw signals.  
+In this project, we have committed to implement the agent using A2C algorithm. There are other distributed algorithms we could have used to solve the environment and compare the performance, such as A3C, [PPO](https://arxiv.org/pdf/1707.06347.pdf), [D4PG](https://openreview.net/pdf?id=SyZipzbCb), [DDPG](https://arxiv.org/pdf/1509.02971.pdf), [Q-PRO](https://arxiv.org/pdf/1611.02247.pdf), [Off-Policy Actor-Critic](http://incompleteideas.net/papers/Degris-OffPAC-ICML-2012.pdf), so on. It is also interesting to see whether we can learn the same agent behavior from the raw signals.  
 
  
 
