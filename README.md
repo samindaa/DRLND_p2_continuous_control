@@ -46,5 +46,5 @@ In order to train and test the agent, we need to install and setup the dependenc
 4.  _cd deep-reinforcement-learning/python_ and install the dependencies with _pip install ._ (please note  that the dot (__.__) is included in the command. The _requirements.txt_ file is available in _deep-reinforcement-learning/python_).  
 5. git clone [https://github.com/samindaa/DRLND\_p2\_continuous\_control.git](https://github.com/udacity/deep-reinforcement-learning.git)
 6. _cd DRLND\_p2\_continuous\_control_
-7. Download [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) Unity environment. 
+7. Download the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) Unity environment. 
 8. Follow the instructions in the _Training_ and _Testing_ sections in this document to train and test the agent.  
