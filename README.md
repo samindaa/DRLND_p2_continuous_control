@@ -41,9 +41,9 @@ Please provide the path of the 20 agent simulator binary or app in the __file\_n
 In order to train and test the agent, we need to install and setup the dependencies as follows:
 
 1. git clone [https://github.com/udacity/deep-reinforcement-learning.git](https://github.com/udacity/deep-reinforcement-learning.git)
-2. Follow the instructions in the _Dependencies_ section to setup _drlnd_ in an Anaconda3 environment with Python 3.6.
+2. Follow the instructions in the _Dependencies_ section to setup the _drlnd_ in an Anaconda3 environment with Python 3.6.
 3. Activate the _drlnd_ environment.
-4.  _cd deep-reinforcement-learning/python_ and install the dependencies with _pip install ._ (please note  that the dot (__.__) is included in the command. The _requirements.txt_ file is available in _deep-reinforcement-learning/python_).  
+4.  _cd deep-reinforcement-learning/python_ and install the dependencies with the command _pip install ._ (please note  that the dot (__.__) is included. The _requirements.txt_ file is available in _deep-reinforcement-learning/python_).  
 5. git clone [https://github.com/samindaa/DRLND\_p2\_continuous\_control.git](https://github.com/udacity/deep-reinforcement-learning.git)
 6. _cd DRLND\_p2\_continuous\_control_
 7. Download the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) Unity environment. 
